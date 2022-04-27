@@ -1,7 +1,6 @@
 ### Apr 26 
 ### Ryan Flake
 ### Uber RIDERS list processing
-### NEED TO UPDATE CANADA
 
 ### Libraries
 
@@ -33,7 +32,7 @@ if (q == "10" | q == "11" | q == "12") {
 
 quarter <- paste(quar,"_",y,sep="")
 
-### Set working directory to Downloads folder and date
+### Set working directory to Desktops folder
 
 setwd(dir = "~/Desktop/Q_Uber/uber_lists/Riders")
 

@@ -4,7 +4,6 @@
 
 ### Libraries
 
-
 library(tidyverse)
 library(lubridate)
 library(magrittr)
@@ -33,7 +32,7 @@ if (q == "10" | q == "11" | q == "12") {
 
 quarter <- paste(quar,"_",y,sep="")
 
-### Set working directory to Downloads folder and date
+### Set working directory to Desktop folder
 
 setwd(dir = "~/Desktop/Q_Uber/uber_lists/Drivers")
 
