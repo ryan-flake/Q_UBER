@@ -33,11 +33,11 @@ if (q == "10" | q == "11" | q == "12") {
 
 quarter <- paste(quar,"_",y,sep="")
 
-### US RIDERS
-
 ### Set working directory to Downloads folder and date
 
 setwd(dir = "~/Desktop/Q_Uber/uber_lists/Riders")
+
+### US RIDERS
 
 ### Update the below info for the specific file
 
@@ -516,7 +516,7 @@ write.csv(df3, final_file1, row.names = FALSE)
 write.csv(df4, final_file2, row.names = FALSE)
 write.csv(df5, final_file3, row.names = FALSE)
 
-### HOLDER FOR CANADA RIDERS
+### CANADA RIDERS
 
 ### Update the below info for the specific file
 
