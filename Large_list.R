@@ -72,6 +72,7 @@ if(Language == "EN-IN"){
   dial_code <- 91
 }
 
+### Test to see if language exists and removes it
 
 if("language" %in% colnames(df1)){
   df1 <- df1 %>%
