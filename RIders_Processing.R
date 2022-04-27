@@ -3,37 +3,11 @@
 ### Uber RIDERS list processing
 ### NEED TO UPDATE CANADA
 
-### US RIDERS
+### Libraries
 
 library(tidyverse)
 library(lubridate)
 library(magrittr)
-
-### Set working directory to Downloads folder and date
-
-setwd('uber_lists/Riders')
-
-### Update the below info for the specific file
-
-upload_file <- "United_States_Riders_pre.csv"
-audience <- "Riders"
-Language <- "EN"
-final_file1 <- "2022_BHT_Riders_US1.csv"
-final_file2 <- "2022_BHT_Riders_US2.csv"
-final_file3 <- "2022_BHT_Riders_US3.csv"
-final_file4 <- "2022_BHT_Riders_US4.csv"
-final_file5 <- "2022_BHT_Riders_US5.csv"
-
-### Read in CSV
-
-df <- read.csv(upload_file)
-
-### Dropping garbage befor uuid
-
-df1 <- df %>%
-  subset(
-    select = -c(Unnamed..0)
-  )
 
 ### Month and quarter info from Base R
 
@@ -59,35 +33,34 @@ if (q == "10" | q == "11" | q == "12") {
 
 quarter <- paste(quar,"_",y,sep="")
 
-### Adding dial code based on Lang
+### US RIDERS
 
-if(Language == "EN" | Language == "FR-CA"){
-  dial_code <- 1
-}
-if(Language == "EN-GB"){
-  dial_code <- 44
-}
-if(Language == "EN-AU"){
-  dial_code <- 61
-}
-if(Language == "ES"){
-  dial_code <- 52
-}
-if(Language == "PT-BR"){
-  dial_code <- 55
-}
-if(Language == "FR"){
-  dial_code <- 33
-}
-if(Language == "JA"){
-  dial_code <- 81
-}
-if(Language == "ZH-T"){
-  dial_code <- 886
-}
-if(Language == "EN-IN"){
-  dial_code <- 91
-}
+### Set working directory to Downloads folder and date
+
+setwd(dir = "~/Desktop/Q_Uber/uber_lists/Riders")
+
+### Update the below info for the specific file
+
+upload_file <- "United_States_Riders_pre.csv"
+audience <- "Riders"
+Language <- "EN"
+dial_code <- 1
+final_file1 <- "2022_BHT_Riders_US1.csv"
+final_file2 <- "2022_BHT_Riders_US2.csv"
+final_file3 <- "2022_BHT_Riders_US3.csv"
+final_file4 <- "2022_BHT_Riders_US4.csv"
+final_file5 <- "2022_BHT_Riders_US5.csv"
+
+### Read in CSV
+
+df <- read.csv(upload_file)
+
+### Dropping garbage befor uuid
+
+df1 <- df %>%
+  subset(
+    select = -c(Unnamed..0)
+  )
 
 ### Test to see if language exists and removes it
 
@@ -145,6 +118,7 @@ write.csv(df7, final_file5, row.names = FALSE)
 upload_file <- "Australia_Riders_pre.csv"
 audience <- "Riders"
 Language <- "EN-AU"
+dial_code <- 61
 final_file1 <- "2022_BHT_Riders_AUS1.csv"
 final_file2 <- "2022_BHT_Riders_AUS2.csv"
 final_file3 <- "2022_BHT_Riders_AUS3.csv"
@@ -161,36 +135,6 @@ df1 <- df %>%
   subset(
     select = -c(Unnamed..0)
   )
-
-### Adding dial code based on Lang
-
-if(Language == "EN" | Language == "FR-CA"){
-  dial_code <- 1
-}
-if(Language == "EN-GB"){
-  dial_code <- 44
-}
-if(Language == "EN-AU"){
-  dial_code <- 61
-}
-if(Language == "ES"){
-  dial_code <- 52
-}
-if(Language == "PT-BR"){
-  dial_code <- 55
-}
-if(Language == "FR"){
-  dial_code <- 33
-}
-if(Language == "JA"){
-  dial_code <- 81
-}
-if(Language == "ZH-T"){
-  dial_code <- 886
-}
-if(Language == "EN-IN"){
-  dial_code <- 91
-}
 
 ### Test to see if language exists and removes it
 
@@ -247,6 +191,7 @@ write.csv(df6, final_file4, row.names = FALSE)
 upload_file <- "Brazil_Riders_pre.csv"
 audience <- "Riders"
 Language <- "PT-BR"
+dial_code <- 55
 final_file1 <- "2022_BHT_Riders_Brazil1.csv"
 final_file2 <- "2022_BHT_Riders_Brazil2.csv"
 final_file3 <- "2022_BHT_Riders_Brazil3.csv"
@@ -262,36 +207,6 @@ df1 <- df %>%
   subset(
     select = -c(Unnamed..0)
   )
-
-### Adding dial code based on Lang
-
-if(Language == "EN" | Language == "FR-CA"){
-  dial_code <- 1
-}
-if(Language == "EN-GB"){
-  dial_code <- 44
-}
-if(Language == "EN-AU"){
-  dial_code <- 61
-}
-if(Language == "ES"){
-  dial_code <- 52
-}
-if(Language == "PT-BR"){
-  dial_code <- 55
-}
-if(Language == "FR"){
-  dial_code <- 33
-}
-if(Language == "JA"){
-  dial_code <- 81
-}
-if(Language == "ZH-T"){
-  dial_code <- 886
-}
-if(Language == "EN-IN"){
-  dial_code <- 91
-}
 
 ### Test to see if language exists and removes it
 
@@ -344,6 +259,7 @@ write.csv(df5, final_file3, row.names = FALSE)
 upload_file <- "France_Riders_pre.csv"
 audience <- "Riders"
 Language <- "FR"
+dial_code <- 33
 final_file1 <- "2022_BHT_Riders_France1.csv"
 final_file2 <- "2022_BHT_Riders_France2.csv"
 final_file3 <- "2022_BHT_Riders_France3.csv"
@@ -367,36 +283,6 @@ if("language" %in% colnames(df1)){
     subset(
       select = -c(language)
     )
-}
-
-### Adding dial code based on Lang
-
-if(Language == "EN" | Language == "FR-CA"){
-  dial_code <- 1
-}
-if(Language == "EN-GB"){
-  dial_code <- 44
-}
-if(Language == "EN-AU"){
-  dial_code <- 61
-}
-if(Language == "ES"){
-  dial_code <- 52
-}
-if(Language == "PT-BR"){
-  dial_code <- 55
-}
-if(Language == "FR"){
-  dial_code <- 33
-}
-if(Language == "JA"){
-  dial_code <- 81
-}
-if(Language == "ZH-T"){
-  dial_code <- 886
-}
-if(Language == "EN-IN"){
-  dial_code <- 91
 }
 
 ### adding in new collumns
@@ -441,6 +327,7 @@ write.csv(df5, final_file3, row.names = FALSE)
 upload_file <- "India_Riders_pre.csv"
 audience <- "Riders"
 Language <- "EN-IN"
+dial_code <- 91
 final_file1 <- "2022_BHT_Riders_India1.csv"
 final_file2 <- "2022_BHT_Riders_India2.csv"
 
@@ -463,36 +350,6 @@ if("language" %in% colnames(df1)){
     subset(
       select = -c(language)
     )
-}
-
-### Adding dial code based on Lang
-
-if(Language == "EN" | Language == "FR-CA"){
-  dial_code <- 1
-}
-if(Language == "EN-GB"){
-  dial_code <- 44
-}
-if(Language == "EN-AU"){
-  dial_code <- 61
-}
-if(Language == "ES"){
-  dial_code <- 52
-}
-if(Language == "PT-BR"){
-  dial_code <- 55
-}
-if(Language == "FR"){
-  dial_code <- 33
-}
-if(Language == "JA"){
-  dial_code <- 81
-}
-if(Language == "ZH-T"){
-  dial_code <- 886
-}
-if(Language == "EN-IN"){
-  dial_code <- 91
 }
 
 ### adding in new collumns
@@ -532,6 +389,7 @@ write.csv(df4, final_file2, row.names = FALSE)
 upload_file <- "Mexico_Riders_pre.csv"
 audience <- "Riders"
 Language <- "ES"
+dial_code <- 52
 final_file1 <- "2022_BHT_Riders_Mexico1.csv"
 final_file2 <- "2022_BHT_Riders_Mexico2.csv"
 final_file3 <- "2022_BHT_Riders_Mexico3.csv"
@@ -555,36 +413,6 @@ if("language" %in% colnames(df1)){
     subset(
       select = -c(language)
     )
-}
-
-### Adding dial code based on Lang
-
-if(Language == "EN" | Language == "FR-CA"){
-  dial_code <- 1
-}
-if(Language == "EN-GB"){
-  dial_code <- 44
-}
-if(Language == "EN-AU"){
-  dial_code <- 61
-}
-if(Language == "ES"){
-  dial_code <- 52
-}
-if(Language == "PT-BR"){
-  dial_code <- 55
-}
-if(Language == "FR"){
-  dial_code <- 33
-}
-if(Language == "JA"){
-  dial_code <- 81
-}
-if(Language == "ZH-T"){
-  dial_code <- 886
-}
-if(Language == "EN-IN"){
-  dial_code <- 91
 }
 
 ### adding in new collumns
@@ -628,6 +456,7 @@ write.csv(df5, final_file3, row.names = FALSE)
 upload_file <- "United_Kingdom_Riders_pre.csv"
 audience <- "Riders"
 Language <- "EN-GB"
+dial_code <- 44
 final_file1 <- "2022_BHT_Riders_UK1.csv"
 final_file2 <- "2022_BHT_Riders_UK2.csv"
 final_file3 <- "2022_BHT_Riders_UK3.csv"
@@ -651,36 +480,6 @@ if("language" %in% colnames(df1)){
     subset(
       select = -c(language)
     )
-}
-
-### Adding dial code based on Lang
-
-if(Language == "EN" | Language == "FR-CA"){
-  dial_code <- 1
-}
-if(Language == "EN-GB"){
-  dial_code <- 44
-}
-if(Language == "EN-AU"){
-  dial_code <- 61
-}
-if(Language == "ES"){
-  dial_code <- 52
-}
-if(Language == "PT-BR"){
-  dial_code <- 55
-}
-if(Language == "FR"){
-  dial_code <- 33
-}
-if(Language == "JA"){
-  dial_code <- 81
-}
-if(Language == "ZH-T"){
-  dial_code <- 886
-}
-if(Language == "EN-IN"){
-  dial_code <- 91
 }
 
 ### adding in new collumns
@@ -723,6 +522,8 @@ write.csv(df5, final_file3, row.names = FALSE)
 
 upload_file <- "Canada_Riders_pre.csv"
 audience <- "Riders"
+Language <-
+dial_code <- 1
 final_file1 <- "2022_BHT_Riders_Canada1.csv"
 final_file2 <- "2022_BHT_Riders_Canada2.csv"
 final_file3 <- "2022_BHT_Riders_Canada3.csv"
@@ -781,41 +582,8 @@ df1 <- df1 %>%
     select = -c(Q_Language.x, Q_Language.y, Language.x, Language.y)
   )
 
-
-### Adding dial code based on Lang
-
-if(Language == "EN" | Language == "FR-CA"){
-  dial_code <- 1
-}
-if(Language == "EN-GB"){
-  dial_code <- 44
-}
-if(Language == "EN-AU"){
-  dial_code <- 61
-}
-if(Language == "ES"){
-  dial_code <- 52
-}
-if(Language == "PT-BR"){
-  dial_code <- 55
-}
-if(Language == "FR"){
-  dial_code <- 33
-}
-if(Language == "JA"){
-  dial_code <- 81
-}
-if(Language == "ZH-T"){
-  dial_code <- 886
-}
-if(Language == "EN-IN"){
-  dial_code <- 91
-}
-
 ### adding in new collumns
 
-df1$Language <- c(Language)
-df1$Q_Language <- c(Language)
 df1$Month <- c(Month)
 df1$quarter <- c(quarter)
 df1$audience <- c(audience)
