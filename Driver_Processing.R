@@ -1,6 +1,7 @@
 ### Apr 26 
 ### Ryan Flake
 ### Uber DRIVERS list processing
+### FIGURE OUT THE DATE AND QUARTER ISSUE
 
 ### Libraries
 
@@ -379,7 +380,7 @@ df2 <- df2 %>% relocate(
 df3 <- df2 %>%
   slice(1:150000)
 df4 <- df2 %>%
-  slice(1500001:n())
+  slice(150001:n())
 
 write.csv(df3, final_file1, row.names = FALSE)
 write.csv(df4, final_file2, row.names = FALSE)

@@ -1,9 +1,9 @@
 ### Apr 26 
 ### Ryan Flake
 ### Uber RIDERS list processing
+### FIGURE OUT THE DATE AND QUARTER ISSUE
 
 ### Libraries
-
 library(tidyverse)
 library(lubridate)
 library(magrittr)
