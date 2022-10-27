@@ -43,7 +43,11 @@ install.packages("lubridate")
 
 7. Repeat the previous step for the other scripts when the console no longer has a stopsign in the right corner of the bottom left tile. 
 
-This will take some time to run and the riders script will take longer as the files are bigger. You will be left with a bunch of processed files in the "Riders" and "Drivers" folders. Use these to upload to the XM Directory
+This will take some time to run and the riders script will take longer as the files are bigger. Once each list is processed, please go through the console and ensure there is no red error text. As well, if there are list issues there will be bold black text that says "... MISMATCH". This means there is non homogenoous or invalid data in the file and needs to be manually checked.
+
+Assuming all went well, you will be left with a bunch of processed files in the "Riders" and "Drivers" folders. Use these to upload to the XM Directory
+
+
 
 
 
