@@ -368,7 +368,7 @@ df2 <- df1 %>% relocate(
 
 ### Phone Number
 
-df2$phone_number <- suppressWarnings(as.numeric(df2$phone_number))
+df2$phone_number <- gsub('.{2}$', '', df2$phone_number)
 
 ### QC for value match
 
