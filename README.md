@@ -43,9 +43,13 @@ install.packages("lubridate")
 
 6. Lastly we need to run the code. Use to following key board comands in the script editor in the top left tile of R stuido. command + a, command + return/enter. This will run the entire Processing script depending on which is open. 
 
-7. Repeat the previous step for the other scripts when the console no longer has a stopsign in the right corner of the bottom left tile. 
+7. Repeat the previous step for the other scripts when the console no longer has a stopsign in the right corner of the bottom left tile. Below is what Rstudio will look like when the code is running
 
-This will take some time to run and the riders script will take longer as the files are bigger. Once each list is processed, please go through the console and ensure there is no red error text. As well, if there are list issues there will be bold black text that says "... MISMATCH". This means there is non homogenoous or invalid data in the file and needs to be manually checked.
+![alt text](https://github.com/ryan-flake/Q_UBER/blob/main/script_running.png?raw=true)
+
+This will take some time to run and the riders script will take longer as the files are bigger. Once each list is processed, please go through the console and ensure there is no red error text. As well, if there are list issues there will be bold black text that says "... MISMATCH". This means there is non homogenoous or invalid data in the file and needs to be manually checked. Example below.
+
+![alt text](https://github.com/ryan-flake/Q_UBER/blob/main/error.png?raw=true)
 
 Assuming all went well, you will be left with a bunch of processed files in the "Riders" and "Drivers" folders. Use these to upload to the XM Directory
 
