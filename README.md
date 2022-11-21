@@ -37,7 +37,9 @@ install.packages("lubridate")
 
 4. We now need to go through each file and rename it so the R code will read the file. For Riders, the stock download with look like this, "United_States_Riders_0212437221.csv". We need to rename the file to "United_States_Riders_pre.csv". This process will be the same for all audiences.
 
-5. QC each list to make sure there are underscores between each word. We will have list errors if the syntax is not 100% accurate so be thourough. 
+5. QC each list to make sure there are underscores between each word. We will have list errors if the syntax is not 100% accurate so be thourough. The final diretory should look like the following 
+
+![alt text](https://https://github.com/ryan-flake/Q_UBER/blob/main/Directory%20example.png?raw=true)
 
 6. Lastly we need to run the code. Use to following key board comands in the script editor in the top left tile of R stuido. command + a, command + return/enter. This will run the entire Processing script depending on which is open. 
 
