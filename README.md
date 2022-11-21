@@ -39,7 +39,7 @@ install.packages("lubridate")
 
 5. QC each list to make sure there are underscores between each word. We will have list errors if the syntax is not 100% accurate so be thourough. The final diretory should look like the following 
 
-![alt text](https://https://github.com/ryan-flake/Q_UBER/blob/main/Directory%20example.png?raw=true)
+![alt text](https://github.com/ryan-flake/Q_UBER/blob/main/directory_example.png?raw=true)
 
 6. Lastly we need to run the code. Use to following key board comands in the script editor in the top left tile of R stuido. command + a, command + return/enter. This will run the entire Processing script depending on which is open. 
 
