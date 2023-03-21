@@ -12,13 +12,20 @@ library(magrittr)
 ### Month and quarter info from Base R
 
 today <- Sys.Date()
-Month <- format(today, format="%B_%Y")
 
-q <- format(today, format="%m")
-y <- format(today, format="%Y")
+day_of_month <- as.integer(format(today, "%d"))
+
+if (day_of_month <= 15) {
+  today1 <- as.Date(format(today, "%Y-%m-01"))
+} else {
+  today1 <- today + months(1)
+}
+
+q <- format(today1, format="%m")
+y <- format(today1, format="%Y")
 quar <- 
   
-if (q == "01" | q == "02 "| q == "03") {
+  if (q == "01" | q == "02 "| q == "03") {
     quar <- "Q1"
   } 
 if (q == "04" | q == "05" | q == "06") {
@@ -32,6 +39,7 @@ if (q == "10" | q == "11" | q == "12") {
 }
 
 quarter <- paste(quar,"_",y,sep="")
+Month <- format(today1, format="%B_%Y")
 
 ### Set working directory to Desktop folder
 
