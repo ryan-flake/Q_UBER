@@ -47,7 +47,7 @@ install.packages("lubridate")
 
 ![alt text](https://github.com/ryan-flake/Q_UBER/blob/main/script_running.png?raw=true)
 
-This will take some time to run and the riders script will take longer as the files are bigger. Once each list is processed, please go through the console and ensure there is no red error text. As well, if there are list issues there will be bold black text that says "... MISMATCH". This means there is non homogenoous or invalid data in the file and needs to be manually checked. Example below.
+This will take some time to run and the riders script will take longer as the files are bigger. Once each list is processed, please go through the console and ensure there is no red error text. As well, if there are list issues there will be bold black text that says "... MISMATCH". This means there is non homogenous or invalid data in the file and needs to be manually checked. Example below.
 
 ![alt text](https://github.com/ryan-flake/Q_UBER/blob/main/error.png?raw=true)
 
