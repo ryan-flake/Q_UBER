@@ -1,4 +1,4 @@
-### Apr 26 
+### June 27 24 
 ### Ryan Flake
 ### Uber Eaters list processing
 
@@ -49,7 +49,7 @@ setwd(dir = "~/Desktop/Q_Uber/uber_lists/Eaters")
 
 ### Update the below info for the specific file
 
-upload_file <- "Master_Tracker_Eater_US_pre.csv"
+upload_file <- "Master_Tracker_Eater_United_States_pre.csv"
 audience <- "Eaters"
 Language <- "EN"
 country <- "United States"
@@ -58,12 +58,12 @@ final_file2 <- "2022_BHT_Eaters_US2.csv"
 
 ### Read in CSV
 
-df <- read.csv(upload_file)
+df1 <- read.csv(upload_file)
 
 ### Dropping garbage befor uuid
 
 if("X" %in% colnames(df)){
-  df1 <- df %>% 
+  df1 <- df1 %>% 
     subset(
       select = -c(X)
     )
@@ -115,9 +115,9 @@ if(any(df2$country_name != country)) cat("COUNTRY MISMATCH")
 ### Chopping up large dataset
 
 df3 <- df2 %>%
-  slice(1:100000)
+  slice(1:150000)
 df4 <- df2 %>%
-  slice(100001:n())
+  slice(150001:n())
 
 
 write.csv(df3, final_file1, row.names = FALSE)
@@ -136,12 +136,12 @@ final_file2 <- "2022_BHT_Eaters_AUS2.csv"
 
 ### Read in CSV
 
-df <- read.csv(upload_file)
+df1 <- read.csv(upload_file)
 
 ### Dropping garbage befor uuid
 
-if("X" %in% colnames(df)){
-  df1 <- df %>% 
+if("X" %in% colnames(df1)){
+  df1 <- df1 %>% 
     subset(
       select = -c(X)
     )
@@ -213,12 +213,12 @@ final_file2 <- "2022_BHT_Eaters_Japan2.csv"
 
 ### Read in CSV
 
-df <- read.csv(upload_file)
+df1 <- read.csv(upload_file)
 
 ### Dropping garbage befor uuid
 
-if("X" %in% colnames(df)){
-  df1 <- df %>% 
+if("X" %in% colnames(df1)){
+  df1 <- df1 %>% 
     subset(
       select = -c(X)
     )
@@ -268,12 +268,10 @@ if(any(df2$quarter != quarter)) cat("Q MISMATCH")
 if(any(df2$audience != audience)) cat("AUDIENCE MISMATCH")
 if(any(df2$country_name != country)) cat("COUNTRY MISMATCH")
 
-
 df3 <- df2 %>%
-  slice(1:125000)
+  slice(1:150000)
 df4 <- df2 %>%
-  slice(125001:n())
-
+  slice(150001:n())
 
 write.csv(df3, final_file1, row.names = FALSE)
 write.csv(df4, final_file2, row.names = FALSE)
@@ -290,12 +288,12 @@ final_file1 <- "2022_BHT_Eaters_France1.csv"
 
 ### Read in CSV
 
-df <- read.csv(upload_file)
+df1 <- read.csv(upload_file)
 
 ### Dropping garbage befor uuid
 
-if("X" %in% colnames(df)){
-  df1 <- df %>% 
+if("X" %in% colnames(df1)){
+  df1 <- df1 %>% 
     subset(
       select = -c(X)
     )
@@ -360,12 +358,12 @@ final_file2 <- "2022_BHT_Eaters_Taiwan2.csv"
 
 ### Read in CSV
 
-df <- read.csv(upload_file)
+df1 <- read.csv(upload_file)
 
 ### Dropping garbage befor uuid
 
-if("X" %in% colnames(df)){
-  df1 <- df %>% 
+if("X" %in% colnames(df1)){
+  df1 <- df1 %>% 
     subset(
       select = -c(X)
     )
@@ -429,7 +427,7 @@ write.csv(df4, final_file2, row.names = FALSE)
 
 ### Update the below info for the specific file
 
-uploaxd_file <- "Master_Tracker_Eater_Mexico_pre.csv"
+upload_file <- "Master_Tracker_Eater_Mexico_pre.csv"
 audience <- "Eaters"
 Language <- "ES"
 country <- "Mexico"
@@ -438,19 +436,19 @@ final_file2 <- "2022_BHT_Eaters_Mexico2.csv"
 
 ### Read in CSV
 
-df <- read.csv(upload_file)
+df1 <- read.csv(upload_file)
 
 ### Dropping garbage befor uuid
 
-if("X" %in% colnames(df)){
-  df1 <- df %>% 
+if("X" %in% colnames(df1)){
+  df1 <- df1 %>% 
     subset(
       select = -c(X)
     )
 }
 
-if("Unnamed..0" %in% colnames(df1)){
-  df1 <- df1 %>% 
+if("Unnamed..0" %in%  colnames(df1)){
+  df1 <- df1 %>%
     subset(
       select = -c(Unnamed..0)
     )
@@ -494,10 +492,9 @@ if(any(df2$audience != audience)) cat("AUDIENCE MISMATCH")
 if(any(df2$country_name != country)) cat("COUNTRY MISMATCH")
 
 df3 <- df2 %>%
-  slice(1:75000)
+  slice(1:100000)
 df4 <- df2 %>%
-  slice(75001:n())
-
+  slice(100001:n())
 
 write.csv(df3, final_file1, row.names = FALSE)
 write.csv(df4, final_file2, row.names = FALSE)
@@ -506,7 +503,7 @@ write.csv(df4, final_file2, row.names = FALSE)
 
 ### Update the below info for the specific file
 
-upload_file <- "Master_Tracker_Eater_UK_pre.csv"
+upload_file <- "Master_Tracker_Eater_United_Kingdom_pre.csv"
 audience <- "Eaters"
 Language <- "EN-GB"
 country <- "United Kingdom"
@@ -514,12 +511,12 @@ final_file1 <- "2022_BHT_Eaters_UK1.csv"
 
 ### Read in CSV
 
-df <- read.csv(upload_file)
+df1 <- read.csv(upload_file)
 
 ### Dropping garbage befor uuid
 
-if("X" %in% colnames(df)){
-  df1 <- df %>% 
+if("X" %in% colnames(df1)){
+  df1 <- df1 %>% 
     subset(
       select = -c(X)
     )
@@ -584,12 +581,12 @@ final_file1 <- "2022_BHT_Eaters_Canada1.csv"
 
 ### Read in CSV
 
-df <- read.csv(upload_file)
+df1 <- read.csv(upload_file)
 
 ### Dropping garbage befor uuid
 
-if("X" %in% colnames(df)){
-  df1 <- df %>% 
+if("X" %in% colnames(df1)){
+  df1 <- df1 %>% 
     subset(
       select = -c(X)
     )
@@ -671,3 +668,149 @@ if(any(df2$audience != audience)) cat("AUDIENCE MISMATCH")
 if(any(df2$country_name != country)) cat("COUNTRY MISMATCH")
 
 write.csv(df2, final_file1, row.names = FALSE)
+
+### Spain Eaters
+
+### Update the below info for the specific file
+
+upload_file <- "Master_Tracker_Eater_spain_pre.csv"
+audience <- "Eaters"
+Language <- "ES-ES"
+country <- "Spain"
+final_file1 <- "2024_BHT_Eaters_Spain1.csv"
+final_file2 <- "2024_BHT_Eaters_Spain2.csv"
+
+### Read in CSV
+
+df1 <- read.csv(upload_file)
+
+### Dropping garbage befor uuid
+
+if("X" %in% colnames(df1)){
+  df1 <- df1 %>% 
+    subset(
+      select = -c(X)
+    )
+}
+
+if("Unnamed..0" %in% colnames(df1)){
+  df1 <- df1 %>% 
+    subset(
+      select = -c(Unnamed..0)
+    )
+}
+
+if("month" %in% colnames(df)){
+  df1 <- df1 %>% 
+    subset(
+      select = -c(month)
+    )
+}
+### Test to see if language exists and removes it
+
+if("language" %in% colnames(df1)){
+  df1 <- df1 %>%
+    mutate(language_preference = language) %>%
+    subset(
+      select = -c(language)
+    )
+}
+
+### adding in new collumns
+
+df1$Month <- c(Month)
+df1$Language <- c(Language)
+df1$Q_Language <- c(Language)
+
+df2 <- df1 %>% relocate(
+  c(Language,Q_Language,Month,quarter,audience),
+  .before = c(email)
+)
+
+### QC for value match
+
+if(any(df2$Q_Language != Language)) cat("LANG MISMATCH")
+if(any(df2$quarter != quarter)) cat("Q MISMATCH")
+if(any(df2$audience != audience)) cat("AUDIENCE MISMATCH")
+if(any(df2$country_name != country)) cat("COUNTRY MISMATCH")
+
+df3 <- df2 %>%
+  slice(1:100000)
+df4 <- df2 %>%
+  slice(100001:n())
+
+write.csv(df3, final_file1, row.names = FALSE)
+write.csv(df4, final_file2, row.names = FALSE)
+
+### Germany Eaters
+
+### Update the below info for the specific file
+
+upload_file <- "Master_Tracker_Eater_germany_pre.csv"
+audience <- "Eaters"
+Language <- "DE"
+country <- "Germany"
+final_file1 <- "2024_BHT_Eaters_DE1.csv"
+final_file2 <- "2024_BHT_Eaters_DE2.csv"
+
+### Read in CSV
+
+df1 <- read.csv(upload_file)
+
+### Dropping garbage befor uuid
+
+if("X" %in% colnames(df1)){
+  df1 <- df1 %>% 
+    subset(
+      select = -c(X)
+    )
+}
+
+if("Unnamed..0" %in% colnames(df1)){
+  df1 <- df1 %>% 
+    subset(
+      select = -c(Unnamed..0)
+    )
+}
+
+if("month" %in% colnames(df)){
+  df1 <- df1 %>% 
+    subset(
+      select = -c(month)
+    )
+}
+### Test to see if language exists and removes it
+
+if("language" %in% colnames(df1)){
+  df1 <- df1 %>%
+    mutate(language_preference = language) %>%
+    subset(
+      select = -c(language)
+    )
+}
+
+### adding in new collumns
+
+df1$Month <- c(Month)
+df1$Language <- c(Language)
+df1$Q_Language <- c(Language)
+
+df2 <- df1 %>% relocate(
+  c(Language,Q_Language,Month,quarter,audience),
+  .before = c(email)
+)
+
+### QC for value match
+
+if(any(df2$Q_Language != Language)) cat("LANG MISMATCH")
+if(any(df2$quarter != quarter)) cat("Q MISMATCH")
+if(any(df2$audience != audience)) cat("AUDIENCE MISMATCH")
+if(any(df2$country_name != country)) cat("COUNTRY MISMATCH")
+
+df3 <- df2 %>%
+  slice(1:100000)
+df4 <- df2 %>%
+  slice(100001:n())
+
+write.csv(df3, final_file1, row.names = FALSE)
+write.csv(df4, final_file2, row.names = FALSE)
