@@ -1,4 +1,4 @@
-### June 26 24
+### Mar 3 2026
 ### Ryan Flake
 ### Uber RIDERS list processing
 
@@ -22,22 +22,14 @@ if (day_of_month <= 15) {
 q <- format(today1, format="%m")
 y <- format(today1, format="%Y")
 quar <- 
-  
-  if (q == "01" | q == "02 "| q == "03") {
-    quar <- "Q1"
-  } 
-if (q == "04" | q == "05" | q == "06") {
-  quar <- "Q2"
-}
-if (q == "07" | q == "08" | q == "09") {
-  quar <- "Q3"
-}
-if (q == "10" | q == "11" | q == "12") {
-  quar <- "Q4"
-}
+if(q == "01"|q == "02"|q == "03"){quar <- "Q1"}
+if(q == "04"|q == "05"|q == "06"){quar <- "Q2"}
+if(q == "07"|q == "08"|q == "09"){quar <- "Q3"}
+if(q == "10"|q == "11"|q == "12"){quar <- "Q4"}
 
 quarter <- paste(quar,"_",y,sep="")
 Month <- format(today1, format="%B_%Y")
+audience_email <- "riders"
 
 ### Set working directory to Desktops folder
 
@@ -98,6 +90,9 @@ if("language" %in% colnames(df1)){
 ### adding in new collumns
 
 df1$Month <- c(Month)
+df1$quarter <- c(quarter)
+df1$audience_email <- c(audience_email)
+df1$quarter <- c(quarter)
 df2 <- df1 %>% relocate(
   c(Language,Q_Language,Month,quarter,audience),
   .before = c(email)
@@ -109,6 +104,12 @@ if(any(df2$Q_Language != Language)) cat("LANG MISMATCH")
 if(any(df2$quarter != quarter)) cat("Q MISMATCH")
 if(any(df2$audience != audience)) cat("AUDIENCE MISMATCH")
 if(any(df2$country_name != country)) cat("COUNTRY MISMATCH")
+
+### NEW A/B Testing
+
+n <- 10000
+sampled_rows <- df2 %>% slice_sample(n = n)
+df2 <- df2 %>% anti_join(sampled_rows, by = names(df2))
 
 ### Chopping up large dataset
 
@@ -126,12 +127,12 @@ df8 <- df2 %>%
   slice(750001:n())
 
 
-write.csv(df3, final_file1, row.names = FALSE)
-write.csv(df4, final_file2, row.names = FALSE)
-write.csv(df5, final_file3, row.names = FALSE)
-write.csv(df6, final_file4, row.names = FALSE)
-write.csv(df7, final_file5, row.names = FALSE)
-write.csv(df8, final_file6, row.names = FALSE)
+write.csv(sampled_rows, final_file1, row.names = FALSE)
+write.csv(df3, final_file2, row.names = FALSE)
+write.csv(df4, final_file3, row.names = FALSE)
+write.csv(df5, final_file4, row.names = FALSE)
+write.csv(df6, final_file5, row.names = FALSE)
+write.csv(df7, final_file6, row.names = FALSE)
 
 ### AUS RIDERS
 
@@ -145,7 +146,6 @@ final_file1 <- "2024_BHT_Riders_AUS1.csv"
 final_file2 <- "2024_BHT_Riders_AUS2.csv"
 final_file3 <- "2024_BHT_Riders_AUS3.csv"
 final_file4 <- "2024_BHT_Riders_AUS4.csv"
-
 
 ### Read in CSV
 
@@ -187,7 +187,8 @@ if("language" %in% colnames(df1)){
 ### adding in new collumns
 
 df1$Month <- c(Month)
-
+df1$quarter <- c(quarter)
+df1$audience_email <- c(audience_email)
 df2 <- df1 %>% relocate(
   c(Language,Q_Language,Month,quarter,audience),
   .before = c(email)
@@ -200,6 +201,12 @@ if(any(df2$quarter != quarter)) cat("Q MISMATCH")
 if(any(df2$audience != audience)) cat("AUDIENCE MISMATCH")
 if(any(df2$country_name != country)) cat("COUNTRY MISMATCH")
 
+### NEW A/B Testing
+
+n <- 10000
+sampled_rows <- df2 %>% slice_sample(n = n)
+df2 <- df2 %>% anti_join(sampled_rows, by = names(df2))
+
 ### Chopping up large dataset
 
 df3 <- df2 %>%
@@ -211,10 +218,10 @@ df5 <- df2 %>%
 df6 <- df2 %>%
   slice(475001:n())
 
-write.csv(df3, final_file1, row.names = FALSE)
-write.csv(df4, final_file2, row.names = FALSE)
-write.csv(df5, final_file3, row.names = FALSE)
-write.csv(df6, final_file4, row.names = FALSE)
+write.csv(sampled_rows, final_file1, row.names = FALSE)
+write.csv(df3, final_file2, row.names = FALSE)
+write.csv(df4, final_file3, row.names = FALSE)
+write.csv(df5, final_file4, row.names = FALSE)
 
 ### Brazil RIDERS
 
@@ -269,7 +276,8 @@ if("language" %in% colnames(df1)){
 ### adding in new collumns
 
 df1$Month <- c(Month)
-
+df1$quarter <- c(quarter)
+df1$audience_email <- c(audience_email)
 df2 <- df1 %>% relocate(
   c(Language,Q_Language,Month,quarter,audience),
   .before = c(email)
@@ -281,6 +289,12 @@ if(any(df2$Q_Language != Language)) cat("LANG MISMATCH")
 if(any(df2$quarter != quarter)) cat("Q MISMATCH")
 if(any(df2$audience != audience)) cat("AUDIENCE MISMATCH")
 if(any(df2$country_name != country)) cat("COUNTRY MISMATCH")
+
+### NEW A/B Testing
+
+n <- 10000
+sampled_rows <- df2 %>% slice_sample(n = n)
+df2 <- df2 %>% anti_join(sampled_rows, by = names(df2))
 
 ### Chopping up large dataset
 
@@ -294,10 +308,10 @@ df6 <- df2 %>%
   slice(450001:n())
 
 
-write.csv(df3, final_file1, row.names = FALSE)
-write.csv(df4, final_file2, row.names = FALSE)
-write.csv(df5, final_file3, row.names = FALSE)
-write.csv(df6, final_file4, row.names = FALSE)
+write.csv(sampled_rows, final_file1, row.names = FALSE)
+write.csv(df3, final_file2, row.names = FALSE)
+write.csv(df4, final_file3, row.names = FALSE)
+write.csv(df5, final_file4, row.names = FALSE)
 
 ### France RIDERS
 
@@ -350,7 +364,8 @@ if("language" %in% colnames(df1)){
 ### adding in new collumns
 
 df1$Month <- c(Month)
-
+df1$quarter <- c(quarter)
+df1$audience_email <- c(audience_email)
 df2 <- df1 %>% relocate(
   c(Language,Q_Language,Month,quarter,audience),
   .before = c(email)
@@ -363,20 +378,22 @@ if(any(df2$quarter != quarter)) cat("Q MISMATCH")
 if(any(df2$audience != audience)) cat("AUDIENCE MISMATCH")
 if(any(df2$country_name != country)) cat("COUNTRY MISMATCH")
 
+### NEW A/B Testing
+
+n <- 10000
+sampled_rows <- df2 %>% slice_sample(n = n)
+df2 <- df2 %>% anti_join(sampled_rows, by = names(df2))
+
 ### Chopping up large dataset
 
 df3 <- df2 %>%
-  slice(1:175000)
+  slice(1:100000)
 df4 <- df2 %>%
-  slice(175001:325000)
-df5 <- df2 %>%
-  slice(325001:n())
+  slice(100001:n())
 
-
-write.csv(df3, final_file1, row.names = FALSE)
-write.csv(df4, final_file2, row.names = FALSE)
-write.csv(df5, final_file3, row.names = FALSE)
-
+write.csv(sampled_rows, final_file1, row.names = FALSE)
+write.csv(df3, final_file2, row.names = FALSE)
+write.csv(df4, final_file3, row.names = FALSE)
 
 ### India RIDERS
 
@@ -433,7 +450,8 @@ if("language" %in% colnames(df1)){
 ### adding in new collumns
 
 df1$Month <- c(Month)
-
+df1$quarter <- c(quarter)
+df1$audience_email <- c(audience_email)
 df2 <- df1 %>% relocate(
   c(Language,Q_Language,Month,quarter,audience),
   .before = c(email)
@@ -456,6 +474,12 @@ if(any(df2$quarter != quarter)) cat("Q MISMATCH")
 if(any(df2$audience != audience)) cat("AUDIENCE MISMATCH")
 if(any(df2$country_name != country)) cat("COUNTRY MISMATCH")
 
+### NEW A/B Testing
+
+n <- 10000
+sampled_rows <- df2 %>% slice_sample(n = n)
+df2 <- df2 %>% anti_join(sampled_rows, by = names(df2))
+
 ### Chopping up large dataset
 
 df3 <- df2 %>%
@@ -467,10 +491,11 @@ df5 <- df2 %>%
 df6 <- df2 %>%
   slice(450001:n())
 
-write.csv(df3, final_file1, row.names = FALSE)
-write.csv(df4, final_file2, row.names = FALSE)
-write.csv(df5, final_file3, row.names = FALSE)
-write.csv(df6, final_file4, row.names = FALSE)
+write.csv(sampled_rows, final_file1, row.names = FALSE)
+write.csv(df3, final_file2, row.names = FALSE)
+write.csv(df4, final_file3, row.names = FALSE)
+write.csv(df5, final_file4, row.names = FALSE)
+write.csv(df6, final_file5, row.names = FALSE)
 
 ### Mexico RIDERS
 
@@ -525,7 +550,8 @@ if("language" %in% colnames(df1)){
 ### adding in new collumns
 
 df1$Month <- c(Month)
-
+df1$quarter <- c(quarter)
+df1$audience_email <- c(audience_email)
 df2 <- df1 %>% relocate(
   c(Language,Q_Language,Month,quarter,audience),
   .before = c(email)
@@ -537,6 +563,12 @@ if(any(df2$Q_Language != Language)) cat("LANG MISMATCH")
 if(any(df2$quarter != quarter)) cat("Q MISMATCH")
 if(any(df2$audience != audience)) cat("AUDIENCE MISMATCH")
 if(any(df2$country_name != country)) cat("COUNTRY MISMATCH")
+
+### NEW A/B Testing
+
+n <- 10000
+sampled_rows <- df2 %>% slice_sample(n = n)
+df2 <- df2 %>% anti_join(sampled_rows, by = names(df2))
 
 ### Chopping up large dataset
 
@@ -550,10 +582,10 @@ df6 <- df2 %>%
   slice(450001:n())
 
 
-write.csv(df3, final_file1, row.names = FALSE)
-write.csv(df4, final_file2, row.names = FALSE)
-write.csv(df5, final_file3, row.names = FALSE)
-write.csv(df6, final_file4, row.names = FALSE)
+write.csv(sampled_rows, final_file1, row.names = FALSE)
+write.csv(df3, final_file2, row.names = FALSE)
+write.csv(df4, final_file3, row.names = FALSE)
+write.csv(df5, final_file4, row.names = FALSE)
 
 ### UK RIDERS
 
@@ -565,6 +597,7 @@ Language <- "EN-GB"
 country <- "United Kingdom"
 final_file1 <- "2024_BHT_Riders_UK1.csv"
 final_file2 <- "2024_BHT_Riders_UK2.csv"
+final_file3 <- "2024_BHT_Riders_UK3.csv"
 
 ### Read in CSV
 
@@ -605,7 +638,8 @@ if("language" %in% colnames(df1)){
 ### adding in new collumns
 
 df1$Month <- c(Month)
-
+df1$quarter <- c(quarter)
+df1$audience_email <- c(audience_email)
 df2 <- df1 %>% relocate(
   c(Language,Q_Language,Month,quarter,audience),
   .before = c(email)
@@ -618,6 +652,12 @@ if(any(df2$quarter != quarter)) cat("Q MISMATCH")
 if(any(df2$audience != audience)) cat("AUDIENCE MISMATCH")
 if(any(df2$country_name != country)) cat("COUNTRY MISMATCH")
 
+### NEW A/B Testing
+
+n <- 10000
+sampled_rows <- df2 %>% slice_sample(n = n)
+df2 <- df2 %>% anti_join(sampled_rows, by = names(df2))
+
 ### Chopping up large dataset
 
 df3 <- df2 %>%
@@ -625,8 +665,9 @@ df3 <- df2 %>%
 df4 <- df2 %>%
   slice(150001:300000)
 
-write.csv(df3, final_file1, row.names = FALSE)
-write.csv(df4, final_file2, row.names = FALSE)
+write.csv(sampled_rows, final_file1, row.names = FALSE)
+write.csv(df3, final_file2, row.names = FALSE)
+write.csv(df4, final_file3, row.names = FALSE)
 
 ### CANADA RIDERS
 
@@ -709,7 +750,8 @@ if("language" %in% colnames(df1)){
 ### adding in new collumns
 
 df1$Month <- c(Month)
-
+df1$quarter <- c(quarter)
+df1$audience_email <- c(audience_email)
 df2 <- df1 %>% relocate(
   c(Language,Q_Language,Month,quarter,audience),
   .before = c(email)
@@ -722,15 +764,14 @@ if(any(df2$quarter != quarter)) cat("Q MISMATCH")
 if(any(df2$audience != audience)) cat("AUDIENCE MISMATCH")
 if(any(df2$country_name != country)) cat("COUNTRY MISMATCH")
 
-### Chopping up large dataset
+### NEW A/B Testing
 
-df3 <- df2 %>%
-  slice(1:150000)
-df4 <- df2 %>%
-  slice(150001:300000)
+n <- 10000
+sampled_rows <- df2 %>% slice_sample(n = n)
+df2 <- df2 %>% anti_join(sampled_rows, by = names(df2))
 
-write.csv(df3, final_file1, row.names = FALSE)
-write.csv(df4, final_file2, row.names = FALSE)
+write.csv(sampled_rows, final_file1, row.names = FALSE)
+write.csv(df2, final_file2, row.names = FALSE)
 
 ### Spain RIDERS
 
@@ -784,6 +825,8 @@ if("language" %in% colnames(df1)){
 ### adding in new collumns
 
 df1$Month <- c(Month)
+df1$quarter <- c(quarter)
+df1$audience_email <- c(audience_email)
 df1$Language <- c(Language)
 df1$Q_Language <- c(Language)
 
@@ -799,6 +842,12 @@ if(any(df2$quarter != quarter)) cat("Q MISMATCH")
 if(any(df2$audience != audience)) cat("AUDIENCE MISMATCH")
 if(any(df2$country_name != country)) cat("COUNTRY MISMATCH")
 
+### NEW A/B Testing
+
+n <- 10000
+sampled_rows <- df2 %>% slice_sample(n = n)
+df2 <- df2 %>% anti_join(sampled_rows, by = names(df2))
+
 ### Chopping up large dataset
 
 df3 <- df2 %>%
@@ -806,15 +855,12 @@ df3 <- df2 %>%
 df4 <- df2 %>%
   slice(150001:300000)
 df5 <- df2 %>%
-  slice(300001:450000)
-df6 <- df2 %>%
-  slice(450001:n())
+  slice(300001:n())
 
-
-write.csv(df3, final_file1, row.names = FALSE)
-write.csv(df4, final_file2, row.names = FALSE)
-write.csv(df5, final_file3, row.names = FALSE)
-write.csv(df6, final_file4, row.names = FALSE)
+write.csv(sampled_rows, final_file1, row.names = FALSE)
+write.csv(df3, final_file2, row.names = FALSE)
+write.csv(df4, final_file3, row.names = FALSE)
+write.csv(df5, final_file4, row.names = FALSE)
 
 ### Germany RIDERS
 
@@ -868,6 +914,8 @@ if("language" %in% colnames(df1)){
 ### adding in new collumns
 
 df1$Month <- c(Month)
+df1$quarter <- c(quarter)
+df1$audience_email <- c(audience_email)
 df1$Language <- c(Language)
 df1$Q_Language <- c(Language)
 
@@ -883,6 +931,12 @@ if(any(df2$quarter != quarter)) cat("Q MISMATCH")
 if(any(df2$audience != audience)) cat("AUDIENCE MISMATCH")
 if(any(df2$country_name != country)) cat("COUNTRY MISMATCH")
 
+### NEW A/B Testing
+
+n <- 10000
+sampled_rows <- df2 %>% slice_sample(n = n)
+df2 <- df2 %>% anti_join(sampled_rows, by = names(df2))
+
 ### Chopping up large dataset
 
 df3 <- df2 %>%
@@ -890,15 +944,13 @@ df3 <- df2 %>%
 df4 <- df2 %>%
   slice(150001:300000)
 df5 <- df2 %>%
-  slice(300001:450000)
-df6 <- df2 %>%
-  slice(450001:n())
+  slice(300001:n())
 
 
-write.csv(df3, final_file1, row.names = FALSE)
-write.csv(df4, final_file2, row.names = FALSE)
-write.csv(df5, final_file3, row.names = FALSE)
-write.csv(df6, final_file4, row.names = FALSE)
+write.csv(sampled_rows, final_file1, row.names = FALSE)
+write.csv(df3, final_file2, row.names = FALSE)
+write.csv(df4, final_file3, row.names = FALSE)
+write.csv(df5, final_file4, row.names = FALSE)
 
 ### Argentina RIDERS
 
@@ -912,6 +964,7 @@ final_file1 <- "2024_BHT_Riders_Argentina1.csv"
 final_file2 <- "2024_BHT_Riders_Argentina2.csv"
 final_file3 <- "2024_BHT_Riders_Argentina3.csv"
 final_file4 <- "2024_BHT_Riders_Argentina4.csv"
+final_file5 <- "2024_BHT_Riders_Argentina5.csv"
 
 ### Read in CSV
 
@@ -952,6 +1005,8 @@ if("language" %in% colnames(df1)){
 ### adding in new collumns
 
 df1$Month <- c(Month)
+df1$quarter <- c(quarter)
+df1$audience_email <- c(audience_email)
 df1$Language <- c(Language)
 df1$Q_Language <- c(Language)
 
@@ -967,6 +1022,12 @@ if(any(df2$quarter != quarter)) cat("Q MISMATCH")
 if(any(df2$audience != audience)) cat("AUDIENCE MISMATCH")
 if(any(df2$country_name != country)) cat("COUNTRY MISMATCH")
 
+### NEW A/B Testing
+
+n <- 10000
+sampled_rows <- df2 %>% slice_sample(n = n)
+df2 <- df2 %>% anti_join(sampled_rows, by = names(df2))
+
 ### Chopping up large dataset
 
 df3 <- df2 %>%
@@ -979,7 +1040,8 @@ df6 <- df2 %>%
   slice(450001:n())
 
 
-write.csv(df3, final_file1, row.names = FALSE)
-write.csv(df4, final_file2, row.names = FALSE)
-write.csv(df5, final_file3, row.names = FALSE)
-write.csv(df6, final_file4, row.names = FALSE)
+write.csv(sampled_rows, final_file1, row.names = FALSE)
+write.csv(df3, final_file2, row.names = FALSE)
+write.csv(df4, final_file3, row.names = FALSE)
+write.csv(df5, final_file4, row.names = FALSE)
+write.csv(df6, final_file5, row.names = FALSE)
